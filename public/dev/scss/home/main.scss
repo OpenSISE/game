@@ -1,5 +1,9 @@
-@import "../vendor/normalize";
-
 p{
   text-align: center;
+}
+
+#screen{
+  height: 500px;
+  background-image: url(../../images/background-1.png);
+  background-size: cover;
 }
