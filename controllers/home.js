@@ -1,5 +1,5 @@
 module.exports = {
   getHome: function(req,res){
-    res.render('home/index')
+    res.render('home')
   }
 }

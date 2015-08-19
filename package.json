@@ -11,5 +11,11 @@
   "dependencies": {
     "express": "^4.13.3",
     "jade": "^1.11.0"
+  },
+  "devDependencies": {
+    "gulp-jade-usemin": "^1.0.5",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-rev": "^5.1.0",
+    "gulp-sass": "^2.0.4"
   }
 }

@@ -9,7 +9,7 @@ app.use(process.env.NODE_ENV === 'production' ? express.static('public/dist') : 
 app.use('/', routes.home);
 
 // view engine
-app.set('views', process.env.NODE_ENV === 'production' ? './view/dist' : './view/dev')
+app.set('views', './view');
 app.set('view engine', 'jade');
 
 module.exports = app;
