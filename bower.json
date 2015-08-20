@@ -1,0 +1,26 @@
+{
+  "name": "sisegame",
+  "main": "index.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/OpenSISE/game",
+  "authors": [
+    "Randy <randypriv@gmail.com>"
+  ],
+  "description": "SISE Game",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/dev",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "~3.0.3",
+    "pure": "~0.6.0"
+  }
+}

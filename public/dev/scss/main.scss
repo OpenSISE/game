@@ -1,9 +1,4 @@
-// global layout style
-
-@import "../vendor/normalize";
-@import "../vendor/fontawesome";
-@import "../vendor/puregrid";
-@import "../global/settings";
+@import "settings";
 
 html{
   -webkit-font-smoothing: antialiased;
