@@ -24,6 +24,11 @@ i.fa{
     font-weight: bold;
     padding: 12px 34px 12px 34px;
     text-decoration: none;
+    transition: background-color 0.2s;
+
+    &:hover{
+      background-color: $primaryColorDark;
+    }
   }
 
   #toolbar{

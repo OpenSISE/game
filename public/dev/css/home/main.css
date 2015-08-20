@@ -5,11 +5,29 @@ p {
   height: 500px;
   background-image: url(../../images/background-1.png);
   background-size: cover; }
+  #screen #landing {
+    color: #fff;
+    position: absolute;
+    font-weight: bold;
+    top: 128px;
+    text-align: center;
+    width: 100%; }
+    #screen #landing .main {
+      font-size: 5em; }
+    #screen #landing .sub {
+      font-size: 1.2em; }
+  #screen #live {
+    width: 640px;
+    height: 360px;
+    margin: 0 auto;
+    background-color: #000;
+    position: relative;
+    top: 256px; }
 
 #programs {
   width: 960px;
   margin: 0 auto;
-  margin-top: 128px; }
+  margin-top: 280px; }
   #programs .program {
     margin-bottom: 78px; }
     #programs .program .title .main {

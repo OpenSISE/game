@@ -15,7 +15,7 @@ gulp.task('default', function(){
 
 gulp.task('scss', function(){
   gulp.src(paths.scss)
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./public/dev/css'))
 })
 
