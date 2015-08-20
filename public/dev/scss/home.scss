@@ -1,4 +1,4 @@
-@import "../global/settings";
+@import "settings";
 
 p{
   text-align: center;
@@ -6,7 +6,7 @@ p{
 
 #screen{
   height: 500px;
-  background-image: url(../../images/background-1.png);
+  background-image: url(../images/background.png);
   background-size: cover;
 
 
