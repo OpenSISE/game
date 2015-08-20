@@ -9,8 +9,8 @@ module.exports = {
     Profile: './public/dev/js/profile.js'
   },
   output: {
-    path: 'public/dev/build',
-    publicPath: 'build/',
+    path: 'public/build',
+    publicPath: 'assets/',
     filename: '[name].js'
   },
   module: {

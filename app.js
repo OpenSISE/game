@@ -3,7 +3,7 @@ var express = require('express')
   , routes = require('./routes')
 
 // static files setting
-app.use(process.env.NODE_ENV === 'production' ? express.static('public/dist') : express.static('public/dev'));
+app.use('/assets', process.env.NODE_ENV === 'production' ? express.static('public/dist') : express.static('public/build'));
 
 // router
 app.use('/', routes.home);

@@ -3,6 +3,6 @@ var express = require('express')
   , controllers = require('../controllers')
 
 router
-  .get('/signin', controllers.user.getSignin)
+  .get('/sign', controllers.user.getSign)
 
 module.exports = router;

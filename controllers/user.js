@@ -1,5 +1,5 @@
 module.exports = {
-  getSignin: function(req,res){
-    res.render('user/signin');
+  getSign: function(req,res){
+    res.render('sign');
   }
 }
