@@ -2,15 +2,15 @@ doctype html
 html
   head
     title SISE Game
-    link(rel="stylesheet", type="text/css", href="css/global/main.css")
+    link(rel="stylesheet", type="text/css", href="/css/global/main.css")
     block styles
   body
     .header
       a(href="/").logo SISE Game
       
       #toolbar
-        a(href="#").item 登录
-        a(href="#").item 注册
+        a(href="/user/signin").item 登录
+        a(href="/user/signup").item 注册
     .container
       block container
     .footer Footer

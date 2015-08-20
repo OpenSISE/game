@@ -7,6 +7,7 @@ app.use(process.env.NODE_ENV === 'production' ? express.static('public/dist') : 
 
 // router
 app.use('/', routes.home);
+app.use('/user', routes.user);
 
 // view engine
 app.set('views', './view');
