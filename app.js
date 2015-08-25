@@ -22,13 +22,10 @@ app.use('/assets', process.env.NODE_ENV === 'production' ? express.static('publi
 
 // router
 app.use('/', routes.home);
-app.use('/api', routes.api);
+app.use('/api/auth', routes.api.auth);
 
 // view engine
 app.set('views', './view');
 app.set('view engine', 'jade');
-
-// locals
-app.locals.siteName = models.site.getName;
 
 module.exports = app;
