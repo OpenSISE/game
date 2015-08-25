@@ -1,11 +1,12 @@
 doctype html
 html
   head
-    title SISE Game
+    block title
+      title #{siteName}
     block styles
   body
     .header
-      a(href="/").logo SISE Game
+      a(href="/").logo #{siteName}
       
       #toolbar
         a(href="/user/sign").item 登录

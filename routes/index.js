@@ -1,4 +1,4 @@
 module.exports = {
   home: require('./home'),
-  user: require('./user')
+  api: require('./api')
 }
