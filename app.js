@@ -25,7 +25,7 @@ app.use('/', routes.home);
 app.use('/api/user', routes.api.user);
 
 // view engine
-app.set('views', './view');
-app.set('view engine', 'jade');
+// app.set('views', './view');
+// app.set('view engine', 'jade');
 
 module.exports = app;
