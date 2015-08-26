@@ -11,8 +11,6 @@ module.exports = {
     // function(err,results){
     //   // final callback
     // })
-    res.render('home', {
-      name: model.site.getName
-    })
+    res.render('home');
   }
 }

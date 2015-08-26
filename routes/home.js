@@ -3,6 +3,8 @@ var express = require('express')
   , controllers = require('../controllers')
 
 router
-  .get('/', controllers.home.getHome)
+  .get('/', function(req,res){
+    res.send('sisegame backend');
+  })
 
 module.exports = router;
