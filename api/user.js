@@ -1,5 +1,7 @@
 var User = require('../models').user;
 
+var passwordHash = require('password-hash');
+
 var methods = {
 
   all: function(req,res){
@@ -15,7 +17,7 @@ var methods = {
 
     var user = new User({
       username: username,
-      password: password
+      password: passwordHash.generate(password)
     })
 
     user.save(function(err,newUser){
@@ -29,7 +31,25 @@ var methods = {
   },
 
   signin: function(req,res){
+    var username = req.body.username
+      , password = req.body.password
 
+    User.findOne({
+      username: req.body.username
+    }, function(err, signInUser){
+      if (err) {
+        res.json(err)
+      } else {
+        if (passwordHash.verify(password, signInUser.password)) {
+          res.send('Success');
+        } else {
+          res.json({
+            signInUserPassword: signInUser.password,
+            password: password
+          })
+        }
+      }
+    })
   }
 }
 
