@@ -3,7 +3,8 @@ var express = require('express')
   , api = require('../../api')
 
 router
-  .get('/list', api.user.all)
+  .get('/', api.user.all)
+  .get('/:username', api.user.userInfo)
   .post('/signin', api.user.signin)
   .post('/signup', api.user.signup)
 

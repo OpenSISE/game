@@ -5,12 +5,15 @@ var express = require('express')
   , routes = require('./routes')
   , models = require('./models')
   , mongoose = require('mongoose')
+  , privateConfig = require('./_config')
 
 // mongodb
 var db = mongoose.createConnection('localhost','sisegame');
 db.on('error', function(err){
   console.log(err)
 })
+
+app.set('secretKey', privateConfig.auth.secretKey);
 
 // utils
 app.use(morgan('dev'));

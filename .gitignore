@@ -1,3 +1,4 @@
 node_modules
 .DS_Store
 public/dev/bower_components/
+_config.js

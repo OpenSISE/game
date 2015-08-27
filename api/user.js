@@ -1,6 +1,8 @@
-var User = require('../models').user;
+var User = require('../models').user
+  , privateConfig = require('../_config')
 
-var passwordHash = require('password-hash');
+var passwordHash = require('password-hash')
+  , jwt = require('jsonwebtoken')
 
 var methods = {
 
@@ -40,17 +42,47 @@ var methods = {
       if (err) {
         res.json(err)
       } else {
-        if (passwordHash.verify(password, signInUser.password)) {
-          res.send('Success');
+        signInUser = signInUser || '';
+        if (signInUser !== '' && passwordHash.verify(password, signInUser.password)) {
+          var token = jwt.sign({userId: signInUser._id, username: signInUser.username}, privateConfig.auth.secretKey, {expiresInMinutes: 10800});
+          res.json({
+            code: '200',
+            token: token
+          })
         } else {
           res.json({
-            signInUserPassword: signInUser.password,
-            password: password
+            code: '400' // 用户名或密码错误
+          })
+        }
+      }
+    })
+  },
+
+  userInfo: function(req,res){
+    var username = req.params.username;
+    User.findOne({username: username}, function(err, user){
+      if (err) {
+        res.json(err);
+      } else {
+        if (user) {
+          res.json({
+            code: '200',
+            id: user._id,
+            username: user.username,
+            room: user.room
+          })
+        } else {
+          res.json({
+            code: '400',
+            message: 'user not found'
           })
         }
       }
     })
   }
+
+  // invalid signature - 无效token
+  // jwt expired - token 过期
 }
 
 module.exports = methods;
