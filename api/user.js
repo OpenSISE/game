@@ -23,8 +23,9 @@ var methods = {
       password: passwordHash.generate(password),
       room: {
         name: username + '\'s Room',
-        description: '',
-        game: 'unset'
+        description: 'No description',
+        game: 'unset',
+        show: false
       }
     })
 

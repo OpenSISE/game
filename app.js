@@ -26,7 +26,7 @@ app.use('/assets', process.env.NODE_ENV === 'production' ? express.static('publi
 // router
 app.use('/', routes.home);
 app.use('/api/user', routes.api.user);
-
+app.use('/api/show', routes.api.show);
 // view engine
 // app.set('views', './view');
 // app.set('view engine', 'jade');
