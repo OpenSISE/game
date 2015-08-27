@@ -56,7 +56,11 @@ var methods = {
           var token = jwt.sign({userId: signInUser._id, username: signInUser.username}, privateConfig.auth.secretKey, {expiresInMinutes: 10800});
           res.json({
             code: '200',
-            token: token
+            token: token,
+            user: {
+              id: signInUser._id,
+              username: signInUser.username
+            }
           })
         } else {
           res.json({
