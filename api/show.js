@@ -1,4 +1,5 @@
-var User = require('../models').user;
+var User = require('../models').user
+  , _ = require('lodash')
 
 var methods = {
   all: function(req,res){
@@ -9,7 +10,7 @@ var methods = {
       if (err) {
         res.json(err)
       } else {
-        res.json(shows);
+        res.json(_.groupBy(shows, 'room.game'));
       }
     })
   }
