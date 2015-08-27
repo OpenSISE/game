@@ -1,5 +1,6 @@
 var User = require('../models').user
   , privateConfig = require('../_config')
+  , _ = require('lodash')
 
 var passwordHash = require('password-hash')
   , jwt = require('jsonwebtoken')
@@ -19,17 +20,24 @@ var methods = {
 
     var user = new User({
       username: username,
-      password: passwordHash.generate(password)
+      password: passwordHash.generate(password),
+      room: {
+        name: username + '\'s Room',
+        description: '',
+        game: 'unset'
+      }
     })
 
     user.save(function(err,newUser){
       if (err) {
-        console.log('Error in signUp:', err)
+        res.json(err)
       } else {
-        console.log('Success signUp for', newUser)
+        res.json({
+          code: '200',
+          user: newUser
+        })
       }
     })
-    res.send('fuck')
   },
 
   signin: function(req,res){
@@ -79,8 +87,34 @@ var methods = {
         }
       }
     })
-  }
+  },
 
+  userUpdate: function(req,res){
+    if (req.user.username === req.params.username) {
+      var query = {
+        room: {
+          name: req.body.roomName,
+          description: req.body.roomDescription,
+          game: req.body.game
+        }
+      }
+      User.findByIdAndUpdate(req.user.userId, query, function(err,user){
+        if (err) {
+          res.json(err)
+        } else {
+          res.json({
+            code: '200',
+            user: user
+          })
+        }
+      })
+    } else {
+      res.json({
+        code: '400',
+        message: 'ACL'
+      })
+    }
+  }
   // invalid signature - 无效token
   // jwt expired - token 过期
 }

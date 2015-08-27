@@ -14,7 +14,7 @@ var userSchema = new Schema({
     description: String,
     show: Boolean,
     rtmp: String,
-    game: Schema.Types.ObjectId
+    game: String
   }
 })
 
