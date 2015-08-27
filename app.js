@@ -1,5 +1,6 @@
 var express = require('express')
   , app = express()
+  , cors = require('cors')
   , bodyParser = require('body-parser')
   , morgan = require('morgan')
   , routes = require('./routes')
@@ -14,6 +15,7 @@ db.on('error', function(err){
 })
 
 app.set('secretKey', privateConfig.auth.secretKey);
+app.use(cors({ origin: privateConfig.cors.origin }));
 
 // utils
 app.use(morgan('dev'));
