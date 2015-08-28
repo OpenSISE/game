@@ -6,7 +6,7 @@ var methods = {
     var query = {
       'room.show': true
     }
-    User.find(query, 'room', function(err,shows){
+    User.find(query, 'room username', function(err,shows){
       if (err) {
         res.json(err)
       } else {
