@@ -32,7 +32,9 @@ var methods = {
 
     user.save(function(err,newUser){
       if (err) {
-        res.json(err)
+        res.json({
+          code: err.code
+        })
       } else {
         var token = jwt.sign({userId: newUser._id, username: newUser.username}, privateConfig.auth.secretKey, {expiresInMinutes: 10800});
         res.json({
