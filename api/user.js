@@ -1,6 +1,7 @@
 var User = require('../models').user
   , privateConfig = require('../_config')
   , _ = require('lodash')
+  , jwt = require('jsonwebtoken')
 
 var passwordHash = require('password-hash')
   , jwt = require('jsonwebtoken')
@@ -14,7 +15,6 @@ var methods = {
   },
 
   signup: function(req,res){
-    console.log('post singup')
     var username = req.body.username
       , password = req.body.password
 
@@ -25,6 +25,7 @@ var methods = {
         name: username + '\'s Room',
         description: 'No description',
         game: 'unset',
+        rtmp: '',
         show: false
       }
     })
@@ -33,9 +34,14 @@ var methods = {
       if (err) {
         res.json(err)
       } else {
+        var token = jwt.sign({userId: newUser._id, username: newUser.username}, privateConfig.auth.secretKey, {expiresInMinutes: 10800});
         res.json({
           code: '200',
-          user: newUser
+          token: token,
+          user: {
+            id: newUser._id,
+            username: newUser.username
+          }
         })
       }
     })
