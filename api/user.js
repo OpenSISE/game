@@ -100,7 +100,8 @@ var methods = {
         room: {
           name: req.body.roomName,
           description: req.body.roomDescription,
-          game: req.body.game
+          game: req.body.game,
+          show: req.body.show
         }
       }
       User.findByIdAndUpdate(req.user.userId, query, function(err,user){
