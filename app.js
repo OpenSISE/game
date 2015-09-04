@@ -15,7 +15,7 @@ db.on('error', function(err){
 })
 
 app.set('secretKey', privateConfig.auth.secretKey);
-app.use(cors({ origin: privateConfig.cors.origin }));
+app.use(cors(privateConfig.cors));
 
 // utils
 app.use(morgan('dev'));
