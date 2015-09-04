@@ -13,6 +13,19 @@ var methods = {
         res.json(_.groupBy(shows, 'room.game'));
       }
     })
+  },
+
+  event: function(req,res){
+    var query = {
+      'room.onScreen': true
+    }
+    User.findOne(query, 'room username', function(err,event){
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(event);
+      }
+    })
   }
 }
 

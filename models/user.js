@@ -17,7 +17,10 @@ var userSchema = new Schema({
     description: String,
     show: Boolean,
     rtmp: String,
-    game: String
+    game: String,
+    onScreen: Boolean,
+    screenTitle: String,
+    screenSubTitle: String
   }
 })
 

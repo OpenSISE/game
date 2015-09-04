@@ -14,6 +14,18 @@ var methods = {
     })
   },
 
+  count: function(req,res){
+    User.count(function(err,count){
+      if (err) {
+        res.json(err);
+      } else {
+        res.json({
+          count: count
+        })
+      }
+    })
+  },
+
   signup: function(req,res){
     var username = req.body.username
       , password = req.body.password
@@ -30,7 +42,8 @@ var methods = {
           description: 'No description',
           game: 'unset',
           rtmp: '',
-          show: false
+          show: false,
+          onScreen: false
         }
       })
 
