@@ -18,35 +18,46 @@ var methods = {
     var username = req.body.username
       , password = req.body.password
 
-    var user = new User({
-      username: username,
-      password: passwordHash.generate(password),
-      room: {
-        name: username + '\'s Room',
-        description: 'No description',
-        game: 'unset',
-        rtmp: '',
-        show: false
-      }
-    })
+    var validate = /^\w{5,12}$/;
 
-    user.save(function(err,newUser){
-      if (err) {
-        res.json({
-          code: err.code
-        })
-      } else {
-        var token = jwt.sign({userId: newUser._id, username: newUser.username}, privateConfig.auth.secretKey, {expiresInMinutes: 10800});
-        res.json({
-          code: '200',
-          token: token,
-          user: {
-            id: newUser._id,
-            username: newUser.username
-          }
-        })
-      }
-    })
+    if (username.match(validate)) {
+      console.log('validate');
+      var user = new User({
+        username: username,
+        password: passwordHash.generate(password),
+        room: {
+          name: username + '\'s Room',
+          description: 'No description',
+          game: 'unset',
+          rtmp: '',
+          show: false
+        }
+      })
+
+      user.save(function(err,newUser){
+        if (err) {
+          res.json({
+            code: err.code
+          })
+        } else {
+          var token = jwt.sign({userId: newUser._id, username: newUser.username}, privateConfig.auth.secretKey, {expiresInMinutes: 10800});
+          res.json({
+            code: '200',
+            token: token,
+            user: {
+              id: newUser._id,
+              username: newUser.username
+            }
+          })
+        }
+      })
+    } else {
+      // 用户名不合法
+      res.json({
+        code: '400'
+      })
+    }
+
   },
 
   signin: function(req,res){
