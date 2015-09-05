@@ -129,12 +129,7 @@ var methods = {
   userUpdate: function(req,res){
     if (req.user.username === req.params.username) {
       var query = {
-        room: {
-          name: req.body.roomName,
-          description: req.body.roomDescription,
-          game: req.body.game,
-          show: req.body.show
-        }
+        room: req.body.room
       }
       User.findByIdAndUpdate(req.user.userId, query, function(err,user){
         if (err) {
