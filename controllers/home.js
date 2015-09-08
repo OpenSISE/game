@@ -1,5 +1,4 @@
 var model = require('../models')
-  , async = require('async')
 
 module.exports = {
   getHome: function(req,res){
